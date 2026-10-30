@@ -1,6 +1,6 @@
 # Tinaja Guaro Bot LLM
 A small local language model behind an **OpenAI-compatible API** (`/v1/chat/completions`, `/v1/models`) for
-[Tinaja Guaro Bot](../tinaja-guaro-bot). It chats in Spanish and English and doesn't "think" out loud.
+[Tinaja Guaro Bot](https://github.com/xionjames/tinaja-guaro-bot). It chats in Spanish and English and doesn't "think" out loud.
 
 - **Model**: [Gemma 4 E4B](https://huggingface.co/google/gemma-4-E4B-it) (Apache-2.0), 4-bit. Of the small models
   compared for the bot (Qwen3-4B, Gemma 4 E4B and E2B), it made up the fewest facts and said "that doesn't exist"
