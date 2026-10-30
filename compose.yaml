@@ -1,0 +1,27 @@
+# docker compose up cpu          # any machine, including a Mac (Docker on macOS is CPU-only)
+# docker compose up cuda         # Linux + NVIDIA GPU + NVIDIA Container Toolkit
+services:
+  cpu:
+    build: .
+    image: tinaja-guaro-bot-llm:cpu
+    ports: ['127.0.0.1:8080:8080'] # this machine only; drop 127.0.0.1: to share it on the network
+    restart: unless-stopped
+
+  cuda:
+    profiles: [cuda]
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ghcr.io/ggml-org/llama.cpp:server-cuda
+    image: tinaja-guaro-bot-llm:cuda
+    ports: ['127.0.0.1:8080:8080'] # this machine only; drop 127.0.0.1: to share it on the network
+    environment:
+      LLAMA_ARG_N_GPU_LAYERS: 99 # every layer on the GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped
