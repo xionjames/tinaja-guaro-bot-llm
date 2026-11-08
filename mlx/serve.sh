@@ -2,7 +2,7 @@
 # Apple Silicon only, runs natively: Docker on macOS has no access to the GPU, so MLX can't run in a container.
 # Same model and the same OpenAI-compatible API on the same port as the Docker images.
 set -eu
-MODEL="${MODEL:-mlx-community/gemma-4-e4b-it-4bit}"
+MODEL="${MODEL:-mlx-community/gemma-4-e2b-it-4bit}"
 HOST="${HOST:-127.0.0.1}"
 PORT="${PORT:-8080}"
 # Gemma 4 thinks before answering by default in MLX; switch it off (clients can still ask for it per request)
